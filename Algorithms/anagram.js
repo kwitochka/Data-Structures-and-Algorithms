@@ -9,20 +9,17 @@ function validAnagram(str1, str2) {
   for (let char of str1) {
     obj1[char] = ++obj1[char] || 1;
   }
-  //create obj2 for occurencies in str2
-  var obj2 = {};
+
+  //obj1[char] === str2[char] ? --obj1[char] : false
 
   for (let char of str2) {
-    obj2[char] = ++obj2[char] || 1;
-  }
-
-  //check obj1 for holding obj[key] and its proper amount
-  for (let char in obj1) {
-    if (obj1[char] !== obj2[char]) {
+    if (obj1[char] > 0) {
+      obj1[char] -= 1;
+    } else {
       return false;
     }
   }
-  //return true or false
+
   return true;
 }
 
